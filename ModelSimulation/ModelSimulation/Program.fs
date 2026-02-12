@@ -38,10 +38,15 @@ input
 |> List.map (fun x -> myDelay x) 
 |> List.iter (fun x -> printf "%f, " x) 
 
-printfn "\nGain of 2 and delay of 2 and integrator"
+printfn "\nGain of -0.5 and delay of 2 and integrator"
 let myNewInt = Integrate 1.
 let myNewDelay = Option.get (Delay 1. 2.)
-let myTransferFunc = myGain >> myNewDelay >> myNewInt
+//let myTransferFunc = myGain >> myNewDelay >> myNewInt
+
 input 
-|> List.map (fun x -> myTransferFunc x)
+|> List.map (fun x -> 
+    x
+    |> myNewInt
+    |> myNewDelay
+    |> myGain)
 |> List.iter (fun x -> printf "%f, " x) 

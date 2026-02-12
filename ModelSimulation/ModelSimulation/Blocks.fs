@@ -28,13 +28,13 @@
 
     let Delay (dt: double) (timeDelay: double) = 
         let delayQueue = Queue<double>()
-        let cnt = int (timeDelay / dt)
+        let count = int (timeDelay / dt)
 
-        if cnt < 1 then None
+        if count < 1 then None
         else Some(
             fun (x: double) ->
                 delayQueue.Enqueue(x)
-                if delayQueue.Count > cnt then
+                if delayQueue.Count > count then
                     delayQueue.Dequeue()
                 else 
                     0)
