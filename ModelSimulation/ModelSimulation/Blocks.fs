@@ -1,5 +1,9 @@
-﻿module Blocks
+﻿
+module Blocks
+
+    open System
     open System.Collections.Generic
+
 
     let Gain (gainCoefficient: double) (x: double) = 
         gainCoefficient * x 
@@ -38,3 +42,14 @@
                     delayQueue.Dequeue()
                 else 
                     0)
+
+
+    type ClampableSignal<'a> = 
+        | NotClamped of 'a
+        | Clamped of 'a
+
+    let Limit (min: double) (max: double) (x: double) = 
+        match x with 
+        | x when x < min -> Clamped min
+        | x when x > max -> Clamped max
+        | _ -> NotClamped x
