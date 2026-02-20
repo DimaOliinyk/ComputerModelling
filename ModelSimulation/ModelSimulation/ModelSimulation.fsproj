@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Compile Include="Blocks.fs" />
+    <Compile Include="Controllers.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
