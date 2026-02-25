@@ -6,9 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="InputFunctions.fs" />
     <Compile Include="Blocks.fs" />
     <Compile Include="Controllers.fs" />
+    <Compile Include="Demo.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FSharp.Charting" Version="2.1.0" />
   </ItemGroup>
 
 </Project>
