@@ -1,4 +1,4 @@
-﻿
+
 module Blocks
 
     open System
@@ -9,8 +9,8 @@ module Blocks
         gainCoefficient * x 
 
     let Integrate (dt: double) = 
-        let mutable prev = double 0.
-        let mutable sum = double 0.
+        let mutable prev: double = 0.
+        let mutable sum: double = 0.
         fun (x: double) -> 
             sum <- (prev + x) * dt / 2. + sum
             prev <- x 
@@ -43,13 +43,20 @@ module Blocks
                 else 
                     0)
 
+    let IntegrateAndLimit (dt: double) (minLimit: double Option) (maxLimit: double Option) = 
+        let mutable prev: double = 0.
+        let mutable sum: double = 0.
 
-    type ClampableSignal<'a> = 
-        | NotClamped of 'a
-        | Clamped of 'a
-
-    let Limit (min: double) (max: double) (x: double) = 
-        match x with 
-        | x when x < min -> Clamped min
-        | x when x > max -> Clamped max
-        | _ -> NotClamped x
+        fun (x: double) -> 
+            sum <- (prev + x) * dt / 2. + sum
+            prev <- x 
+            
+            match (minLimit, sum) with 
+            | Some(lowlim), s when s <= lowlim -> sum <- lowlim
+            | _ -> ()
+                                    
+            match (maxLimit, sum) with 
+            | Some(uplim), s when s >= uplim -> sum <- uplim
+            | _ -> ()
+            
+            sum

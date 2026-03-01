@@ -1,4 +1,4 @@
-﻿module InputFunctions
+module InputFunctions
 
 let Heaviside (dt:double) (time: double): double list = 
     [for i in 0.0..dt..time do yield 1.0]

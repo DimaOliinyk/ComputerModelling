@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="BallBalancer/BallBalancer.csproj" Id="884734e3-1ac4-41be-9f12-08522ce1e12c" />
+  <Project Path="CompterModellingWithGUI/CompterModellingWithGUI.csproj" />
+  <Project Path="ModellingLogic/ModellingLogic.fsproj" />
+</Solution>
