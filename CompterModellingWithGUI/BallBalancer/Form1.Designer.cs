@@ -41,6 +41,10 @@
             Btn_Stop = new Button();
             Timer_Main = new System.Windows.Forms.Timer(components);
             pictureBox1 = new PictureBox();
+            Lbl_AbsIntErr = new Label();
+            Lbl_SqrIntErr = new Label();
+            Lbl_AxesLimit = new Button();
+            Btn_ManualAutomaticControl = new Button();
             ((System.ComponentModel.ISupportInitialize)Chart_Main).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -48,12 +52,14 @@
             // Chart_Main
             // 
             Chart_Main.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Chart_Main.BorderlineColor = SystemColors.ButtonHighlight;
             chartArea1.Name = "ChartArea1";
             Chart_Main.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             Chart_Main.Legends.Add(legend1);
             Chart_Main.Location = new Point(0, 214);
             Chart_Main.Name = "Chart_Main";
+            Chart_Main.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
@@ -77,7 +83,7 @@
             // 
             // Btn_X_Inc
             // 
-            Btn_X_Inc.Location = new Point(421, 179);
+            Btn_X_Inc.Location = new Point(443, 179);
             Btn_X_Inc.Name = "Btn_X_Inc";
             Btn_X_Inc.Size = new Size(29, 29);
             Btn_X_Inc.TabIndex = 2;
@@ -141,12 +147,54 @@
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
+            // Lbl_AbsIntErr
+            // 
+            Lbl_AbsIntErr.AutoSize = true;
+            Lbl_AbsIntErr.Location = new Point(638, 97);
+            Lbl_AbsIntErr.Name = "Lbl_AbsIntErr";
+            Lbl_AbsIntErr.Size = new Size(34, 20);
+            Lbl_AbsIntErr.TabIndex = 8;
+            Lbl_AbsIntErr.Text = "AIE:";
+            // 
+            // Lbl_SqrIntErr
+            // 
+            Lbl_SqrIntErr.AutoSize = true;
+            Lbl_SqrIntErr.Location = new Point(638, 128);
+            Lbl_SqrIntErr.Name = "Lbl_SqrIntErr";
+            Lbl_SqrIntErr.Size = new Size(32, 20);
+            Lbl_SqrIntErr.TabIndex = 11;
+            Lbl_SqrIntErr.Text = "SIE:";
+            // 
+            // Lbl_AxesLimit
+            // 
+            Lbl_AxesLimit.Location = new Point(629, 183);
+            Lbl_AxesLimit.Name = "Lbl_AxesLimit";
+            Lbl_AxesLimit.Size = new Size(159, 29);
+            Lbl_AxesLimit.TabIndex = 12;
+            Lbl_AxesLimit.Text = "Fixed";
+            Lbl_AxesLimit.UseVisualStyleBackColor = true;
+            Lbl_AxesLimit.Click += Lbl_AxesLimit_Click;
+            // 
+            // Btn_ManualAutomaticControl
+            // 
+            Btn_ManualAutomaticControl.Location = new Point(81, 179);
+            Btn_ManualAutomaticControl.Name = "Btn_ManualAutomaticControl";
+            Btn_ManualAutomaticControl.Size = new Size(174, 29);
+            Btn_ManualAutomaticControl.TabIndex = 13;
+            Btn_ManualAutomaticControl.Text = "Automatic";
+            Btn_ManualAutomaticControl.UseVisualStyleBackColor = true;
+            Btn_ManualAutomaticControl.Click += Btn_ManualAutomaticControl_Click;
+            // 
             // Form_Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(800, 450);
+            Controls.Add(Btn_ManualAutomaticControl);
+            Controls.Add(Lbl_AxesLimit);
+            Controls.Add(Lbl_SqrIntErr);
+            Controls.Add(Lbl_AbsIntErr);
             Controls.Add(pictureBox1);
             Controls.Add(Btn_Stop);
             Controls.Add(Btn_Start);
@@ -174,5 +222,9 @@
         private Button Btn_Stop;
         private System.Windows.Forms.Timer Timer_Main;
         private PictureBox pictureBox1;
+        private Label Lbl_AbsIntErr;
+        private Label Lbl_SqrIntErr;
+        private Button Lbl_AxesLimit;
+        private Button Btn_ManualAutomaticControl;
     }
 }

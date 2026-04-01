@@ -10,10 +10,4 @@ module Controllers
             Gain pGain x + 
             Gain dGain (derv x) + 
             Gain iGain (intg x) 
-            
-    let NegativeFeedbackLoop (fowardSignal: double) (backwardSignal: double) = 
-        fowardSignal / (backwardSignal + fowardSignal)
-
-    let PositiveFeedbackLoop (fowardSignal: double) (backwardSignal: double) = 
-        -(NegativeFeedbackLoop -fowardSignal backwardSignal) // -(-Wf / Wb - Wf) = Wf / (Wb - Wf)
     
